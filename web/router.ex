@@ -23,6 +23,8 @@ defmodule Habanero.Router do
   scope "/api", Habanero do
     pipe_through :api
 
+    get "/subjects/:subject_id/drawings", DrawingController, :by_subject
+
     resources "/subjects", SubjectController, except: [:new, :edit]
     resources "/drawings", DrawingController, except: [:new, :edit]
   end

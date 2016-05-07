@@ -1,8 +1,9 @@
 defmodule Habanero.Drawing do
   use Habanero.Web, :model
+  alias Habanero.{Subject, Drawing, Repo}
 
   schema "drawings" do
-    belongs_to :subject, Habanero.Subject
+    belongs_to :subject, Subject
     field :img_url, :string
     field :name, :string
 
@@ -21,5 +22,12 @@ defmodule Habanero.Drawing do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def by_subject(subject_id) do
+    query = from(drawing in Drawing,
+        where: drawing.subject_id == ^subject_id)
+    
+    Repo.all(query)
   end
 end

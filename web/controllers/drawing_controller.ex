@@ -10,6 +10,11 @@ defmodule Habanero.DrawingController do
     render(conn, "index.json", drawings: drawings)
   end
 
+  def by_subject(conn, %{"subject_id" => subject_id}) do
+    drawings = Drawing.by_subject(subject_id)
+    render(conn, "index.json", drawings: drawings)
+  end
+
   def create(conn, %{"drawing" => drawing_params}) do
     changeset = Drawing.changeset(%Drawing{}, drawing_params)
 
