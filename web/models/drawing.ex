@@ -1,15 +1,15 @@
-defmodule Habanero.Subject do
+defmodule Habanero.Drawing do
   use Habanero.Web, :model
 
-  schema "subjects" do
-    has_many :drawings, Habanero.Drawing
-    field :name, :string
+  schema "drawings" do
+    belongs_to :subject, Habanero.Subject
     field :img_url, :string
+    field :name, :string
 
     timestamps
   end
 
-  @required_fields ~w(name img_url)
+  @required_fields ~w(img_url name subject_id)
   @optional_fields ~w()
 
   @doc """
