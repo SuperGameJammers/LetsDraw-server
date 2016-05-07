@@ -20,7 +20,9 @@ defmodule Habanero.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Habanero do
-  #   pipe_through :api
-  # end
+  scope "/api", Habanero do
+    pipe_through :api
+
+    resources "/subjects", SubjectController, except: [:new, :edit]
+  end
 end
