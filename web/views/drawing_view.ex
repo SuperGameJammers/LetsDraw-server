@@ -13,7 +13,8 @@ defmodule Habanero.DrawingView do
     %{id: drawing.id,
       subject_id: drawing.subject_id,
       img_url: drawing.img_url,
-      name: drawing.name
+      name: drawing.name,
+      order: drawing.order
     }
   end
 end

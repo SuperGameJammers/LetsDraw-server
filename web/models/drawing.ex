@@ -8,11 +8,12 @@ defmodule Habanero.Drawing do
 
     field :img_url, :string
     field :name, :string
+    field :order, :integer
 
     timestamps
   end
 
-  @required_fields ~w(img_url name subject_id)
+  @required_fields ~w(img_url name subject_id order)
   @optional_fields ~w()
 
   @doc """
