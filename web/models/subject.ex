@@ -5,11 +5,13 @@ defmodule Habanero.Subject do
     has_many :drawings, Habanero.Drawing
     field :name, :string
     field :img_url, :string
+    # Complexity can be "easy", "mid", "hard"
+    field :complexity, :string
 
     timestamps
   end
 
-  @required_fields ~w(name img_url)
+  @required_fields ~w(name img_url complexity)
   @optional_fields ~w()
 
   @doc """

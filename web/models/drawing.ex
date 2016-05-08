@@ -29,7 +29,8 @@ defmodule Habanero.Drawing do
 
   def by_subject(subject_id) do
     query = from(drawing in Drawing,
-        where: drawing.subject_id == ^subject_id)
+        where: drawing.subject_id == ^subject_id,
+        order_by: [asc: drawing.order])
     
     Repo.all(query)
   end
