@@ -4,7 +4,6 @@ import urllib
 from itertools import izip
 
 from PIL import Image
-from havenondemand.hodclient import *
 from scipy import sum
 
 def compare(img1, img2):
@@ -22,9 +21,6 @@ def compareImages(file1,file2):
     return compare(img1,img2)
 
 def main():
-    if (len(sys.argv) < 3 or sys.argv[1] == "learn"):
-        print("high")
-    else:
         file1, file2 = sys.argv[1:1 + 2]
         img1 = Image.open(io.BytesIO(urllib.urlopen(file1).read()))
         img2 = Image.open(io.BytesIO(urllib.urlopen(file2).read()))
@@ -35,4 +31,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-client = HODClient("d028225e-f3d7-49ce-b431-c2d769602f1f", version="v1")
