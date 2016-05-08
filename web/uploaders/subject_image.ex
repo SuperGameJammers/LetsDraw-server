@@ -29,6 +29,10 @@ defmodule Habanero.SubjectImage do
     "subjects"
   end
 
+  def s3_object_headers(version, {file, scope}) do
+    [content_type: "image/png"]
+  end
+
   # Provide a default URL if there hasn't been a file uploaded
   # def default_url(version, scope) do
   #   "/images/avatars/default_#{version}.png"
