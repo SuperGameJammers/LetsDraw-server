@@ -13,7 +13,7 @@ defmodule Habanero.Drawing do
     timestamps
   end
 
-  @required_fields ~w(name order characteristics)
+  @required_fields ~w(name order characteristics subject_id)
   @optional_fields ~w()
 
   @required_file_fields ~w(img_url)

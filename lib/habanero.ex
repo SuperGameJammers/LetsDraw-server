@@ -44,7 +44,12 @@ defmodule Habanero do
   end
 
   def test_python do
+<<<<<<< HEAD
+    {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+    :python.call(pid, :test, :version, [])
+=======
         {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
         :python.call(pid, :test, :version, [filePath])
+>>>>>>> 0bb876dcaa2534df387e96db0c1b7b1532e7e057
   end
 end
