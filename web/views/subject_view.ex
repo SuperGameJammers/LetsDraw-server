@@ -1,5 +1,6 @@
 defmodule Habanero.SubjectView do
   use Habanero.Web, :view
+  alias Habanero.SubjectImage
 
   def render("index.json", %{subjects: subjects}) do
     %{data: render_many(subjects, Habanero.SubjectView, "subject.json")}
@@ -12,7 +13,7 @@ defmodule Habanero.SubjectView do
   def render("subject.json", %{subject: subject}) do
     %{id: subject.id,
       name: subject.name,
-      img_url: subject.img_url,
+      img_url: SubjectImage.url({subject.img_url, subject}),
       complexity: subject.complexity}
   end
 end
