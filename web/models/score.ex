@@ -1,18 +1,15 @@
-defmodule Habanero.Drawing do
+defmodule Habanero.Score do
   use Habanero.Web, :model
-  alias Habanero.{Subject, Drawing, Repo, Score}
 
-  schema "drawings" do
-    belongs_to :subject, Subject
-    has_many :scores, Score
-
+  schema "scores" do
+    belongs_to :drawing, Habanero.Drawing
+    field :rate, :integer
     field :img_url, :string
-    field :name, :string
 
     timestamps
   end
 
-  @required_fields ~w(img_url name subject_id)
+  @required_fields ~w(rate img_url drawing_id)
   @optional_fields ~w()
 
   @doc """
@@ -24,12 +21,5 @@ defmodule Habanero.Drawing do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-  end
-
-  def by_subject(subject_id) do
-    query = from(drawing in Drawing,
-        where: drawing.subject_id == ^subject_id)
-    
-    Repo.all(query)
   end
 end

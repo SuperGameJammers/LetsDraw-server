@@ -27,5 +27,6 @@ defmodule Habanero.Router do
 
     resources "/subjects", SubjectController, except: [:new, :edit]
     resources "/drawings", DrawingController, except: [:new, :edit]
+    resources "/scores", ScoreController, except: [:new, :edit]
   end
 end
