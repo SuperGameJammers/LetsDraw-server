@@ -33,11 +33,6 @@ defmodule Habanero.DrawingController do
     end
   end
 
-  def get_all(conn) do
-  	query = from d in Drawings,
-  			select: d
-  	json(conn, Repo.all(query))
-  end
   defp parse_img(drawing_params) do
     img = drawing_params["img"]
        |> Base.decode64!
