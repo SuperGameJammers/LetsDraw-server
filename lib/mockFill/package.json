@@ -1,0 +1,18 @@
+{
+  "name": "mockfill",
+  "version": "1.0.0",
+  "description": "Small script used to fill the api with fake data to test out the machine learning algorithm",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuperGameJammers/toreaditas-server.git"
+  },
+  "author": "Dan amador",
+  "license": "ISC",
+  "dependencies": {
+    "node-base64-image": "^0.1.2",
+    "q": "^1.4.1",
+    "request": "^2.72.0"
+  }
+}

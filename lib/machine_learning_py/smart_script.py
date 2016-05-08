@@ -16,6 +16,10 @@ def compare(img1, img2):
     ncomponents = img1.size[0] * img2.size[1] * 3
     return (dif / 256.0 * 100) / ncomponents
 
+def compareImages(file1,file2):
+    img1 = Image.open(io.BytesIO(urllib.urlopen(file1).read()))
+    img2 = Image.open(io.BytesIO(urllib.urlopen(file2).read()))
+    return compare(img1,img2)
 
 def main():
     if (len(sys.argv) < 3 or sys.argv[1] == "learn"):
