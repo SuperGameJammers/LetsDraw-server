@@ -3,7 +3,7 @@ import sys
 import urllib
 from itertools import izip
 
-from Pillow import Image
+from PIL import Image
 from havenondemand.hodclient import *
 from scipy import sum
 
@@ -19,7 +19,7 @@ def compare(img1, img2):
 
 def main():
     if (len(sys.argv) < 3 or sys.argv[1] == "learn"):
-
+        print("high")
     else:
         file1, file2 = sys.argv[1:1 + 2]
         img1 = Image.open(io.BytesIO(urllib.urlopen(file1).read()))
