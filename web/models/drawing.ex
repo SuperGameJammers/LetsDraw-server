@@ -9,11 +9,11 @@ defmodule Habanero.Drawing do
     field :img_url, Habanero.DrawingImage.Type
     field :name, :string
     field :order, :integer
-	field :characteristics, {:array, :string}
+	  field :characteristics, {:array, :string}
     timestamps
   end
 
-  @required_fields ~w(name order)
+  @required_fields ~w(name order characteristics)
   @optional_fields ~w()
 
   @required_file_fields ~w(img_url)

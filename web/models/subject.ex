@@ -13,7 +13,7 @@ defmodule Habanero.Subject do
     timestamps
   end
 
-  @required_fields ~w(name complexity)
+  @required_fields ~w(name complexity characteristics)
   @optional_fields ~w()
 
   @required_file_fields ~w(img_url)

@@ -25,7 +25,7 @@ defmodule Habanero.Router do
 
     get "/subjects/:subject_id/drawings", DrawingController, :by_subject
     get "/drawings/:drawing_id/scores", ScoreController, :by_drawing
-	get "/drawings", DrawingController, :get_all
+
     resources "/subjects", SubjectController, except: [:new, :edit]
     resources "/drawings", DrawingController, except: [:new, :edit]
     resources "/scores", ScoreController, except: [:new, :edit]
