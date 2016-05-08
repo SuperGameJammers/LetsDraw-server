@@ -1,4 +1,4 @@
-defmodule Habanero.DrawingImage do
+defmodule Habanero.SubjectImage do
   use Arc.Definition
 
   # Include ecto support (requires package arc_ecto installed):
@@ -21,12 +21,12 @@ defmodule Habanero.DrawingImage do
 
   # Override the persisted filenames:
   def filename(version, {file, scope}) do
-    "#{scope.order}"
+    "#{scope.name}"
   end
 
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
-    "subjects/#{scope.subject_id}/drawings"
+    "subjects"
   end
 
   def s3_object_headers(version, {file, scope}) do

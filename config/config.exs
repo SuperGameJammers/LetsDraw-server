@@ -19,12 +19,24 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Amazon S3 
+# Arc 
 config :arc,
-  access_key_id: "AKIAIFUAFSRU2XAVWNWQ",
-  secret_access_key: "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",
+  access_key_id: "AKIAIGNRHLVTZVSTRF2A",
+  secret_access_key: "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",
   bucket: "nnnnn",
   asset_host: "https://nnnnn.s3.amazonaws.com"
+
+# Ex Aws
+
+config :ex_aws,
+  access_key_id: "AKIAIGNRHLVTZVSTRF2A",
+  secret_access_key: "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",
+  region: "us-east-1"
+  #s3: [
+  #  scheme: "https://nnnnn.",
+  #  host: "s3.us-east-1.amazonaws.com",
+  #  region: "us-east-1"
+  #]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
