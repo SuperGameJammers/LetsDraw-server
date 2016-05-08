@@ -33,9 +33,23 @@ defmodule Habanero do
     {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
     :python.call(pid, :smart_script, :compareImages, [link1, link2])
   end
+  def predict(filePath)  do
+    {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+    :python.call(pid, :mashainLearnz, :learn, [filePath])
+  end
+
+  def train(filePath)  do
+    {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+    :python.call(pid, :mashainLearnz, :train, [filePath])
+  end
 
   def test_python do
+<<<<<<< HEAD
     {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
     :python.call(pid, :test, :version, [])
+=======
+        {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+        :python.call(pid, :test, :version, [filePath])
+>>>>>>> 0bb876dcaa2534df387e96db0c1b7b1532e7e057
   end
 end
