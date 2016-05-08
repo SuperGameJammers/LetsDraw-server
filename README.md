@@ -1,10 +1,16 @@
 ## Dump to CSV for machine learning feeding
 
-```COPY drawings TO '/Users/zu/drawings.csv' DELIMITER ',' CSV HEADER;```
+```sql
+COPY drawings TO '/Users/zu/drawings.csv' DELIMITER ',' CSV HEADER;
+```
 
-```COPY subjects TO '/Users/zu/subjects.csv' DELIMITER ',' CSV HEADER;```
+```sql
+COPY subjects TO '/Users/zu/subjects.csv' DELIMITER ',' CSV HEADER;
+```
 
-```COPY scores TO '/Users/zu/scores.csv' DELIMITER ',' CSV HEADER;```
+```sql
+COPY scores TO '/Users/zu/scores.csv' DELIMITER ',' CSV HEADER;
+```
 
 ## Succint endpoint docs
 ### In doubt, ask Zura
@@ -29,7 +35,7 @@ ROUTE: /drawings/:drawing_id/scores
 METHODS: GET
 ```
 
-```
+```javascript
 SAMPLE JSON
 {
     "drawing": {
