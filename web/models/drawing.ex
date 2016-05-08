@@ -1,20 +1,25 @@
 defmodule Habanero.Drawing do
   use Habanero.Web, :model
   alias Habanero.{Subject, Drawing, Repo, Score}
+  use Arc.Ecto.Schema
+  use Arc.Ecto.Model
 
   schema "drawings" do
     belongs_to :subject, Subject
     has_many :scores, Score
 
-    field :img_url, :string
+    field :img_url, Habanero.Drawing.Type
     field :name, :string
     field :order, :integer
 
     timestamps
   end
 
-  @required_fields ~w(img_url name subject_id order)
+  @required_fields ~w(name subject_id order)
   @optional_fields ~w()
+
+  @required_file_fields ~w(img_url)
+  @optional_file_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -25,6 +30,7 @@ defmodule Habanero.Drawing do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> cast_attachments(params, @required_file_fields, @optional_file_fields)
   end
 
   def by_subject(subject_id) do

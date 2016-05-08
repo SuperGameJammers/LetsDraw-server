@@ -19,6 +19,13 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Amazon S3 
+config :arc,
+  access_key_id: "AKIAIFUAFSRU2XAVWNWQ",
+  secret_access_key: "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",
+  bucket: "nnnnn",
+  asset_host: "https://nnnnn.s3.amazonaws.com"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
