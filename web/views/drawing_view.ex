@@ -15,7 +15,8 @@ defmodule Habanero.DrawingView do
       subject_id: drawing.subject_id,
       img_url: DrawingImage.url({drawing.img_url, drawing}),
       name: drawing.name,
-      order: drawing.order
+      order: drawing.order,
+      characteristics: drawing.characteristics
     }
   end
 end

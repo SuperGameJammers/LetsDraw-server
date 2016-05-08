@@ -8,6 +8,7 @@ defmodule Habanero.Subject do
     field :img_url, Habanero.SubjectImage.Type
     # Complexity can be "easy", "mid", "hard"
     field :complexity, :string
+    field :characteristics, {:array, :string}
 
     timestamps
   end

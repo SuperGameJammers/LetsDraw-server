@@ -6,7 +6,6 @@ defmodule Habanero.Drawing do
   schema "drawings" do
     belongs_to :subject, Subject
     has_many :scores, Score
-
     field :img_url, Habanero.DrawingImage.Type
     field :name, :string
     field :order, :integer
@@ -14,7 +13,7 @@ defmodule Habanero.Drawing do
     timestamps
   end
 
-  @required_fields ~w(name subject_id order)
+  @required_fields ~w(name order)
   @optional_fields ~w()
 
   @required_file_fields ~w(img_url)
@@ -36,7 +35,7 @@ defmodule Habanero.Drawing do
     query = from(drawing in Drawing,
         where: drawing.subject_id == ^subject_id,
         order_by: [asc: drawing.order])
-    
+
     Repo.all(query)
   end
 end
