@@ -11,7 +11,7 @@ defmodule Habanero.Score do
     timestamps
   end
 
-  @required_fields ~w(rate img_url drawing_id)
+  @required_fields ~w(rate drawing_id)
   @optional_fields ~w()
 
   @doc """
