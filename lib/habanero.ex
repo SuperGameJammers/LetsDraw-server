@@ -35,7 +35,7 @@ defmodule Habanero do
   end
 
   def test_python do
-        {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
-        :python.call(pid, :test, :version, [])
+    {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+    :python.call(pid, :test, :version, [])
   end
 end

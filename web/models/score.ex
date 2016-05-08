@@ -11,8 +11,8 @@ defmodule Habanero.Score do
     timestamps
   end
 
-  @required_fields ~w(rate drawing_id)
-  @optional_fields ~w()
+  @required_fields ~w(drawing_id)
+  @optional_fields ~w(rate)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
