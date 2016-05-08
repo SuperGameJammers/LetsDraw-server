@@ -31,4 +31,12 @@ defmodule Habanero.Score do
     
     Repo.all(query)
   end
+
+  def with_drawing(drawing_id) do
+    query = from(score in Score,
+        where: score.drawing_id == ^drawing_id,
+        preload: [:drawing])
+    
+    Repo.one(query)
+  end
 end

@@ -1,7 +1,7 @@
 defmodule Habanero.ScoreController do
   use Habanero.Web, :controller
 
-  alias Habanero.Score
+  alias Habanero.{Score, CallPython, Drawing, DrawingImage}
 
   plug :scrub_params, "score" when action in [:create, :update]
 
@@ -16,6 +16,13 @@ defmodule Habanero.ScoreController do
   end
 
   def create(conn, %{"score" => score_params}) do
+    drawing = Repo.get!(Drawing, score_params["drawing_id"])
+    drawing_img = DrawingImage.url({drawing.img_url, drawing})
+    img = parse_img(score_params)
+    rate = CallPython.smart_script(drawing_img, img)
+         |> round
+    
+    score_params = Map.put(score_params, "rate", rate)
     changeset = Score.changeset(%Score{}, score_params)
 
     case Repo.insert(changeset) do
@@ -29,6 +36,11 @@ defmodule Habanero.ScoreController do
         |> put_status(:unprocessable_entity)
         |> render(Habanero.ChangesetView, "error.json", changeset: changeset)
     end
+  end
+
+  defp parse_img(score_params) do
+    score_params["img"]
+    |> Base.decode64!
   end
 
   def show(conn, %{"id" => id}) do
