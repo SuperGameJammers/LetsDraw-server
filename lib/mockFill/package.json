@@ -11,6 +11,7 @@
   "author": "Dan amador",
   "license": "ISC",
   "dependencies": {
+    "faker": "^3.1.0",
     "node-base64-image": "^0.1.2",
     "q": "^1.4.1",
     "request": "^2.72.0"
