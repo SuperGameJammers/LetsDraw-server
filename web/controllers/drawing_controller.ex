@@ -1,5 +1,6 @@
 defmodule Habanero.DrawingController do
   use Habanero.Web, :controller
+  require IEx
 
   alias Habanero.Drawing
 
@@ -16,8 +17,9 @@ defmodule Habanero.DrawingController do
   end
 
   def create(conn, %{"drawing" => drawing_params}) do
+    img = parse_img(drawing_params)
+    drawing_params = Map.put(drawing_params, "img_url", img)
     changeset = Drawing.changeset(%Drawing{}, drawing_params)
-
     case Repo.insert(changeset) do
       {:ok, drawing} ->
         conn
@@ -29,6 +31,16 @@ defmodule Habanero.DrawingController do
         |> put_status(:unprocessable_entity)
         |> render(Habanero.ChangesetView, "error.json", changeset: changeset)
     end
+  end
+
+  defp parse_img(drawing_params) do
+    img = drawing_params["img"]
+       |> Base.decode64!
+    File.write("./priv/tmp/#{drawing_params["name"]}.png", img)
+
+    %Plug.Upload{content_type: "image/png", 
+                 filename: "#{drawing_params["name"]}.png", 
+                 path: "./priv/tmp/#{drawing_params["name"]}.png"}
   end
 
   def show(conn, %{"id" => id}) do

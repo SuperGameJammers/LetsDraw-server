@@ -11,6 +11,8 @@ defmodule Habanero.SubjectController do
   end
 
   def create(conn, %{"subject" => subject_params}) do
+    img = parse_img(subject_params)
+    subject_params = Map.put(subject_params, "img_url", img)
     changeset = Subject.changeset(%Subject{}, subject_params)
 
     case Repo.insert(changeset) do
@@ -24,6 +26,16 @@ defmodule Habanero.SubjectController do
         |> put_status(:unprocessable_entity)
         |> render(Habanero.ChangesetView, "error.json", changeset: changeset)
     end
+  end
+
+  defp parse_img(subject_params) do
+    img = subject_params["img"]
+       |> Base.decode64!
+    File.write("./priv/tmp/#{subject_params["name"]}.png", img)
+
+    %Plug.Upload{content_type: "image/png", 
+                 filename: "#{subject_params["name"]}.png", 
+                 path: "./priv/tmp/#{subject_params["name"]}.png"}
   end
 
   def show(conn, %{"id" => id}) do
