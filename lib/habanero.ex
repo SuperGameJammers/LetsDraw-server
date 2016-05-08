@@ -1,5 +1,6 @@
 defmodule Habanero do
   use Application
+  require IEx
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -29,7 +30,7 @@ defmodule Habanero do
   end
 
   def test_python do
-    {:ok, pp} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
-    :python.call(pp, :test, :version, [])
+    {:ok, pid} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+    :python.call(pid, :test, :version, [])
   end
 end
