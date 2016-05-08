@@ -1,4 +1,4 @@
-defmodule Habanero.Drawing do
+defmodule Habanero.DrawingImage do
   use Arc.Definition
 
   # Include ecto support (requires package arc_ecto installed):
@@ -21,7 +21,7 @@ defmodule Habanero.Drawing do
 
   # Override the persisted filenames:
   def filename(version, {file, scope}) do
-    "#{order}"
+    "#{scope.order}"
   end
 
   # Override the storage directory:

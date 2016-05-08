@@ -1,14 +1,13 @@
 defmodule Habanero.Drawing do
   use Habanero.Web, :model
   alias Habanero.{Subject, Drawing, Repo, Score}
-  use Arc.Ecto.Schema
   use Arc.Ecto.Model
 
   schema "drawings" do
     belongs_to :subject, Subject
     has_many :scores, Score
 
-    field :img_url, Habanero.Drawing.Type
+    field :img_url, Habanero.DrawingImage.Type
     field :name, :string
     field :order, :integer
 
