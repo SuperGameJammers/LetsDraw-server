@@ -24,6 +24,7 @@ defmodule Habanero.Router do
     pipe_through :api
 
     get "/subjects/:subject_id/drawings", DrawingController, :by_subject
+    get "/drawings/:drawing_id/scores", ScoreController, :by_drawing
 
     resources "/subjects", SubjectController, except: [:new, :edit]
     resources "/drawings", DrawingController, except: [:new, :edit]

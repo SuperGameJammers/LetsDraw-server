@@ -10,6 +10,11 @@ defmodule Habanero.ScoreController do
     render(conn, "index.json", scores: scores)
   end
 
+  def by_drawing(conn, %{"drawing_id" => drawing_id}) do
+    scores = Score.by_drawing(drawing_id)
+    render(conn, "index.json", scores: scores)
+  end
+
   def create(conn, %{"score" => score_params}) do
     changeset = Score.changeset(%Score{}, score_params)
 

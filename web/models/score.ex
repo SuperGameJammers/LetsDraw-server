@@ -1,8 +1,10 @@
 defmodule Habanero.Score do
   use Habanero.Web, :model
 
+  alias Habanero.{Drawing, Repo, Score}
+
   schema "scores" do
-    belongs_to :drawing, Habanero.Drawing
+    belongs_to :drawing, Drawing
     field :rate, :integer
     field :img_url, :string
 
@@ -21,5 +23,12 @@ defmodule Habanero.Score do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  def by_drawing(drawing_id) do
+    query = from(score in Score,
+        where: score.drawing_id == ^drawing_id)
+    
+    Repo.all(query)
   end
 end
