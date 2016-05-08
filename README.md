@@ -47,3 +47,35 @@ SAMPLE JSON
     }
 }
 ```
+
+**SUBJECTS** ->
+
+  *name STR
+  
+  *characteristics STR ARRAY
+  
+  *complexity STR ("easy", "mid", "hard")
+  
+  *img STR
+
+**DRAWINGS** ->
+
+  *name STR
+  
+  *subject_id INT
+  
+  *characteristics STR ARRAY
+  
+  *order INT
+  
+  *img STR
+  
+**SCORES** ->
+
+  *name STR
+  
+  *drawing_id INT
+  
+  *rate INT
+  
+  *img STR
