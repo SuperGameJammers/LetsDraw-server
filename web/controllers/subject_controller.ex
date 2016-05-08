@@ -1,6 +1,5 @@
 defmodule Habanero.SubjectController do
   use Habanero.Web, :controller
-
   alias Habanero.Subject
 
   plug :scrub_params, "subject" when action in [:create, :update]
