@@ -27,4 +27,9 @@ defmodule Habanero do
     Habanero.Endpoint.config_change(changed, removed)
     :ok
   end
+
+  def test_python do
+    {:ok, pp} = :python.start([{:python_path, to_char_list(Path.expand("lib/machine_learning_py"))},{:python, 'python'}])
+    :python.call(pp, :test, :version, [])
+  end
 end

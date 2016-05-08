@@ -41,7 +41,8 @@ defmodule Habanero.Mixfile do
      {:arc_ecto, "~> 0.3.2"},
      {:ex_aws, "~> 0.4.10"},
      {:httpoison, "~> 0.7"},
-     {:poison, "~> 1.2"}]
+     {:poison, "~> 1.2"},
+     {:erlport, git: "https://github.com/hdima/erlport.git"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
