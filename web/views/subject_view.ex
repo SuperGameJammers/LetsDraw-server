@@ -11,9 +11,11 @@ defmodule Habanero.SubjectView do
   end
 
   def render("subject.json", %{subject: subject}) do
+    img_url = SubjectImage.url({subject.img_url, subject})
+
     %{id: subject.id,
       name: subject.name,
-      img_url: SubjectImage.url({subject.img_url, subject}),
+      img_url: img_url,
       complexity: subject.complexity,
       characteristics: subject.characteristics
       }
