@@ -15,7 +15,7 @@ defmodule Habanero.SubjectView do
 
     %{id: subject.id,
       name: subject.name,
-      img_url: img_url,
+      imgUrl: img_url,
       complexity: subject.complexity,
       characteristics: subject.characteristics
       }
